@@ -72,7 +72,7 @@
 			<version>2.19.1</version>
 		</dependency>
 	</dependencies>
-  <build>
-    <finalName>BellaShoes</finalName>
-  </build>
+<!--  <build>-->
+<!--    <finalName>BellaShoes</finalName>-->
+<!--  </build>-->
 </project>

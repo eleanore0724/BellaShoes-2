@@ -1,4 +1,5 @@
 <%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="tw.com.lccnet.dao.CartDao"%>
 <%@page import="tw.com.lccnet.dao.daoLmpl.CartDaoImpl"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -10,7 +11,17 @@
 		request.setAttribute("auth", auth);
 	}
 %>
-<% List<CartItem> cartList = (List<CartItem>) request.getAttribute("cartList"); %>
+<%
+List<CartItem> cart = (List<CartItem>) session.getAttribute("cart");
+if (cart == null) cart = new ArrayList<>();
+%>
+<%
+    Integer cartCount = (Integer) session.getAttribute("cartCount");
+    if (cartCount == null) {
+        cartCount = 0; // 一開始是 0
+    }
+    String userName = (String) session.getAttribute("userName"); // 如果之後要加登入會員
+%>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3 fixed-top">
         <div class="container">
@@ -19,7 +30,7 @@
 		<div class="collapse navbar-collapse position-absolute top-50 start-50 translate-middle" id="navbarNav">
 			<ul class="navbar-nav gap-3">
 				<li class="nav-item"><a class="nav-link" href="index.jsp">首頁</a></li>
-				<li class="nav-item"><a class="nav-link" href="latest-product.jsp">新品登場</a></li>
+				<!--  <li class="nav-item"><a class="nav-link" href="latest-product.jsp">新品登場</a></li> -->
 				<li class="nav-item"><a class="nav-link" href="indexServlet">全部商品</a></li>
 				<li class="nav-item dropdown"><a class="nav-link dropdown-toggle active" href="#" id="navProducts" role="button" data-bs-toggle="dropdown" aria-expanded="false">商品分類</a>
 					<ul class="dropdown-menu" aria-labelledby="navProducts">
@@ -40,13 +51,14 @@
 		    	if(auth != null){%>
 		    	<span class="nav-link text-white">您好，<%= auth.getName() %>! </span>
 				<li class="nav-item me-2"><a class="nav-link" href="logoutServlet">登出</a></li>
+				<li class="nav-item me-2"><a class="nav-link" href="member.jsp">會員中心</a></li>
 				<%}else{%>	
 				<li class="nav-item me-2"><a class="nav-link" href="login.jsp">登入</a></li>
 				<%}%>
 				<li class="nav-item"><a
-					class="btn btn-outline-light position-relative" href="cartServlet">購物車
+					class="btn btn-outline-light position-relative" href="cart.jsp">購物車
 						<span id="cartCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-light text-dark">
-						${sessionScope.cartCount != null ? sessionScope.cartCount : 0}
+						<%= cartCount %>
 						</span>
 				</a></li>
 			</ul>

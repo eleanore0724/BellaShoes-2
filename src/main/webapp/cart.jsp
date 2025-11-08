@@ -34,11 +34,11 @@
 						</div>
 						<ul id="cart-list" class="list-group list-group-flush">							
 
-							<%if (cartList == null || cartList.isEmpty()) {%>
+							<%if (cart == null || cart.isEmpty()) {%>
 							<p>目前購物車是空的！</p>
 							<%} else {%>
 							<!-- 購物車商品- (不帶參數) -->
-							<% for (CartItem item : cartList) { %>
+							<% for (CartItem item : cart) { %>
 							<ul class="list-group">
 								<li class="list-group-item d-flex align-items-center">
 									<!-- 商品圖片 -->
@@ -57,16 +57,22 @@
 									</div> <!-- 數量控制 -->
 									<div class="flex-shrink-0 d-flex align-items-center gap-2">
 										<div class="input-group" style="width: 100px;">
-											<button class="btn btn-outline-secondary btn-sm btn-minus" type="button">-</button>
-											<input type="number" class="form-control form-control-sm text-center" value="<%= item.getQuantity() %>" min="1">
-											<button class="btn btn-outline-secondary btn-sm btn-plus" type="button">+</button>
+											<form action="updateCart" method="post" style="display:flex; align-items:center; gap:5px;">
+												<input type="hidden" name="product_id" value="<%= item.getProduct_id() %>">
+												<button class="btn btn-outline-secondary btn-sm" name="action" value="decrease">-</button>
+												<input class="form-control form-control-sm text-center" value="<%= item.getQuantity()%>" min="1">
+												<button class="btn btn-outline-secondary btn-sm" name="action" value="increase">+</button>
+											</form>
 										</div>
 										<div class="text-end" style="width: 80px;">
 											<div class="fw-semibold">$<%= item.getPrice() * item.getQuantity() %></div>
 										</div>
-										<button class="btn btn-outline-danger btn-sm btn-remove" title="移除商品">
-											<span>×</span>
-										</button>
+										<form action="deleteCart" method="post" style="display:flex;">
+											<input type="hidden" name="product_id" value="<%= item.getProduct_id() %>">
+											<button class="btn btn-outline-danger btn-sm" title="移除商品">
+												<span>×</span>
+											</button>
+										</form>
 									</div>
 								</li>
 							</ul>

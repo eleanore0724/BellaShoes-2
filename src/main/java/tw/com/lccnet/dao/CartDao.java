@@ -6,14 +6,10 @@ import tw.com.lccnet.model.CartItem;
 
 public interface CartDao {
 	
-	public void addToCart(int productId);
+	void insertCartItem(int user_id, CartItem item);
 	
-	public List<CartItem> getAllCartItems();
+	List<CartItem> getCartByUserId(int user_id);
 	
-	//有使用者的的取值
-	public List<CartItem> getCartItemsByUser(int user_id);
-	
-	public int getCartCount();
-	
-	public int getCartTotalPrice();
+	//取消訂單
+	void deleteCartByUserId(int user_id);
 }

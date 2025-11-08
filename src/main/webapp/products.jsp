@@ -60,8 +60,11 @@
 										<p class="card-text">TWD $ ${list.price}</p>
 									</div>
 									<!-- 購物車按鈕 -->
-								<form action="addToCartServlet" method="post" class="position-absolute bottom-0 end-0 m-2">
+								<form action="addToCart" method="post" class="position-absolute bottom-0 end-0 m-2">
 									<input type="hidden" name="product_id" value="${list.product_id}">
+									<input type="hidden" name="product_name" value="${list.product_name}">
+									<input type="hidden" name="price" value="${list.price}">
+									<input type="hidden" name="image_url" value="${list.image_url}">
 									<button type="submit" class="btn btn-outline-dark btn-sm rounded-3 px-2 py-1" id="btn-add">
 										<i class="bi bi-cart-plus me-1"></i> 加入購物車
 									</button>
