@@ -104,8 +104,11 @@
 
                     <!-- 操作按鈕 -->
                     <div class="d-flex gap-2">
-                    <form action="addToCartServlet" method="post">
+                    <form action="addToCart" method="post">
                     	<input type="hidden" name="product_id" value="${product.product_id}">
+                    	<input type="hidden" name="product_name" value="${product.product_name}">
+						<input type="hidden" name="price" value="${product.price}">
+						<input type="hidden" name="image_url" value="${product.image_url}">
                         <button id="btn-add" class="btn btn-dark btn-add-cart">加入購物車</button>
                     </form>
                         <a href="cartServlet" class="btn btn-outline-dark">前往購物車</a>

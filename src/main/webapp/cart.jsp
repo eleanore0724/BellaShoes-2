@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -142,7 +144,9 @@
 
 						<!-- 操作按鈕 -->
 						<div class="d-grid gap-2">
-							<a href="checkout.jsp" class="btn btn-dark" id="checkout-btn">前往結帳</a>
+							<form action="saveCart" method="post" class="d-grid">
+								<button class="btn btn-dark" id="checkout-btn" type="submit">前往結帳</button>
+							</form>
 							<form action="clearCartServlet" method="post" class="d-grid">
 								<button id="btn-clear" class="btn btn-outline-dark" type="submit">清空購物車</button>
 							</form>

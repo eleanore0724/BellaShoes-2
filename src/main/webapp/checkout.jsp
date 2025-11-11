@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,32 +17,39 @@
 					<form class="p-3 bg-white border rounded-2" action="checkout"
 						method="post">
 						<h1 class="h5">收件資訊</h1>
+						<form action="checkout" method="post">
 						<div class="row g-3 mt-1">
 							<div class="col-md-6">
-								<label for="name" class="form-label">姓名</label> <input id="name" name="name" class="form-control" placeholder="王小明" required>
+								<label for="name" class="form-label">姓名</label> 
+								<input type="text" name="shipping_name" class="form-control" placeholder="王小明" required>
 							</div>
 							<div class="col-md-6">
-								<label for="phone" class="form-label">電話</label> <input id="phone" name="phone" class="form-control" placeholder="0912-345-678" required>
+								<label for="phone" class="form-label">電話</label> 
+								<input type="text" name="shipping_phone" class="form-control" placeholder="0912-345-678" required>
 							</div>
 							<div class="col-12">
-								<label for="address" class="form-label">地址</label> <input id="address" name="address" class="form-control" placeholder="台北市中正區…" required>
+								<label for="address" class="form-label">地址</label> 
+								<input type="text" name="shipping_address" class="form-control" placeholder="台北市中正區…" required>
 							</div>
 							<div class="col-md-6">
-								<label for="shipping" class="form-label">配送方式</label> <select id="shipping" name="shipping" class="form-select" required>
-									<option value="home">宅配</option>
-									<option value="store">超商取貨</option>
+								<label for="shipping" class="form-label">配送方式</label> 
+								<select id="shipping" name="shipping" class="form-select" required>
+									<option name="delivery_method" value="home">宅配</option>
+									<option name="delivery_method" value="store">超商取貨</option>
 								</select>
 							</div>
 							<div class="col-md-6">
-								<label for="payment" class="form-label">付款方式</label> <select id="payment" name="payment" class="form-select" required>
-									<option value="credit">信用卡</option>
-									<option value="transfer">轉帳</option>
-									<option value="cash">現金</option>
+								<label for="payment" class="form-label">付款方式</label> 
+								<select name="payment" class="form-select" required>
+									<option name="payment_method" value="credit">信用卡</option>
+									<option name="payment_method" value="transfer">轉帳</option>
+									<option name="payment_method" value="cash">現金</option>
 								</select>
 							</div>
 							<div class="col-12">
 								<button type="submit" id="btn-pay" class="btn btn-dark w-100">送出訂單</button>
 							</div>
+							</form>
 						</div>
 					</form>
 				</div>
